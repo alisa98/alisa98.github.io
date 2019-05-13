@@ -107,7 +107,7 @@ var strongEl = document.getElementById('latest-word');
 		       			var str = e.results[i][0].transcript;
 		       			console.log('Recognised: ' + str);
 		       			// If the user said 'video' then parse it further
-		       			if (userSaid(str, 'video')) {
+		       			
 		       				// Replay the video
 		       				if (userSaid(str, 'replay')) {
 		       					video.currentTime = 0;
@@ -151,7 +151,7 @@ var strongEl = document.getElementById('latest-word');
 		       						highlightCommand('vidVolOn');
 		       					}
 		       				}
-		       			}
+		       			
 	       			}
 	        	}
 	    	}
