@@ -52,10 +52,9 @@
     text-align: left;
     vertical-align: top;
   }
-  #headline {
-    font-size: 40px;
-    font-weight: 300;
-  }
+.voicetype{
+  text-align: center;
+}
   #info {
     font-size: 20px;
     text-align: center;
@@ -174,14 +173,19 @@
   height: 1px;
   -webkit-margin-before: 0;
 }
+
+
+
 .footer{
+  position: fixed;
+    left: 0; bottom: 0;
   display: flex;
   width: 100%;
   box-sizing: border-box;
   padding-left: 5vw;
   padding-right: 5vw;
   justify-content: space-between;
-  padding-top: 13px;
+  
   padding-bottom: 18px;
   align-items: center;
 }
