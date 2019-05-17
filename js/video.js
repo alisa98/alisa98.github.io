@@ -1,46 +1,7 @@
 var allLinks = document.getElementsByTagName('a');
-// get last word said element
 var strongEl = document.getElementById('latest-word');
 
-// new instance of speech recognition
-// var rec = new webkitSpeechRecognition();
-// // set params
-// rec.lang = 'en-US';
-// rec.continuous = true;
-// rec.interimResults = true;
-// reco.start();
-
-// rec.onresult = function(event){
-  
-//   // delve into words detected results & get the latest
-//   // total results detected
-//   var resultsLength = event.results.length -1 ;
-//   // get length of latest results
-//   var ArrayLength = event.results[resultsLength].length -1;
-//   // get last word detected
-//   var saidWord = event.results[resultsLength][ArrayLength].transcript;
-  
-//   // loop through links and match to word spoken
-//   for (i=0; i<allLinks.length; i++) {
-    
-//     // get the word associated with the link
-//     var dataWord = allLinks[i].dataset.word;
-    
-//     // if word matches chenge the colour of the link
-//     if (saidWord.indexOf(dataWord) != -1) {
-//       allLinks[i].click();
-//     }
-//   }
-  
-//   // append the last word to the bottom sentence
-//   strongEl.innerHTML = saidWord;
-// }
-
-
-	// Get some required handles
 	var video = document.getElementById('v');
-
-	// Define a new speech recognition instance
 	var rec = null;
 	try {
 		rec = new webkitSpeechRecognition();
@@ -58,12 +19,10 @@ var strongEl = document.getElementById('latest-word');
 		// Define a threshold above which we are confident(!) that the recognition results are worth looking at 
 		var confidenceThreshold = 0.5;
 
-		// Simple function that checks existence of s in str
 		var userSaid = function(str, s) {
 			return str.indexOf(s) > -1;
 		}
 
-		// Highlights the relevant command that was recognised in the command list for display purposes
 		var highlightCommand = function(cmd) {
 			var el = document.getElementById(cmd); 
 			el.setAttribute('data-state', 'highlight');
@@ -72,11 +31,9 @@ var strongEl = document.getElementById('latest-word');
 			}, 3000);
 		}
 
-		// Process the results when they are returned from the recogniser
+
 		rec.onresult = function(e) {
 
-// delve into words detected results & get the latest
-  // total results detected
   var resultsLength = event.results.length -1 ;
   // get length of latest results
   var ArrayLength = event.results[resultsLength].length -1;
@@ -106,46 +63,46 @@ var strongEl = document.getElementById('latest-word');
 	       			if (parseFloat(e.results[i][0].confidence) >= parseFloat(confidenceThreshold)) {
 		       			var str = e.results[i][0].transcript;
 		       			console.log('Recognised: ' + str);
-		       			// If the user said 'video' then parse it further
 		       			
-		       				// Replay the video
+		       			
+		       				
 		       				if (userSaid(str, 'replay')) {
 		       					video.currentTime = 0;
 		       					video.play();
 		       					highlightCommand('vidReplay');
 		       				}
-		       				// Play the video
+		       				
 		       				else if (userSaid(str, 'play')) {
 		       					video.play();
 		       					highlightCommand('vidPlay');
 		       				}
-		       				// Stop the video
+		       				
 		       				else if (userSaid(str, 'stop')) {
 		       					video.pause();
 		       					highlightCommand('vidStop');
 		       				}
-		       				// If the user said 'volume' then parse it even further
+		       				
 		       				else if (userSaid(str, 'volume')) {
-		       					// Check the current volume setting of the video
+		       				
 		       					var vol = Math.floor(video.volume * 10) / 10;
-		       					// Increase the volume
+		       					
 		       					if (userSaid(str, 'increase')) {
 		       						if (vol >= 0.9) video.volume = 1;
 		       						else video.volume += 0.1;
 		       						highlightCommand('vidVolInc');
 		       					}
-		       					// Decrease the volume
+		       					
 		       					else if (userSaid(str, 'decrease')) {
 		       						if (vol <= 0.1) video.volume = 0;
 		       						else video.volume -= 0.1;
 		       						highlightCommand('vidVolDec');
 		       					}
-		       					// Turn the volume off (mute)
+		       					
 		       					else if (userSaid(str, 'of')) {
 		       						video.muted = true;
 		       						highlightCommand('vidVolOff');
 		       					}
-		       					// Turn the volume on (unmute)
+		       					
 		       					else if (userSaid(str, 'on')) {
 		       						video.muted = false;
 		       						highlightCommand('vidVolOn');
@@ -157,12 +114,12 @@ var strongEl = document.getElementById('latest-word');
 	    	}
 		};
 
-		// Start speech recognition
+		
 		var startRec = function() {
 			rec.start();
 			recStatus.innerHTML = 'recognising';
 		}
-		// Stop speech recognition
+		
 		var stopRec = function() {
 			rec.stop();
 			recStatus.innerHTML = 'not recognising';

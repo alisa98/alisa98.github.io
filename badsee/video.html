@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head> 
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Speech color changer</title>
+
+  <link rel="stylesheet" href="css/index.css">
+</head> 
+
+<body>
+<div class="header_container">
+
+  <div class="header_left">
+    <div class="phone_container">
+      <img src="img/phone.png">
+      <span>000 123 456 789</span>
+    </div>
+    <div class="message_container">
+      <img src="img/message.png">
+      <span>alisa.utlik@gmail.com</span>
+    </div>
+  </div>
+    <div class="header_right">
+     <div class="logo">
+    <span class="blue_logo">Free</span>
+    <span class="red_logo">Hands</span>
+  </div>
+    
+  </div>
+</div>
+
+<div class="menu_logo">
+  <div class="logo">
+  </div>
+  <div class="menu">
+     <a href="../index.html" data-word="visually normal">VISUALLY NORMAL</a>
+   <a href="index.html" data-word="home">HOME</a>
+  <a href="color.html" data-word="changer">COLOR CHANGER</a>
+  <a href="video.html" data-word="video">VIDEO</a>
+  <a href="text.html" data-word="message">MESSAGE</a>
+  </div>
+</div>
+
+<div class="posts_page_container">
+  <span class="post_main_header">Video Voice Control with the Web Speech API</span>
+  <span class="post_main_text">
+    <video id="v" controls preload="metadata">
+      <source src="video/big-buck-bunny.mp4" type="video/mp4">
+    </video>
+  </span>
+
+<div class="butts_container">
+    <div class="post">
+     <button id="startRecBtn">Start Recognition</button>
+    </div>
+    <div class="post">
+    <button id="stopRecBtn">Stop Recognition</button>
+    </div>
+
+  </div>
+
+    <p>Click "Start Recognition", give microphone access permission and start controlling the video's playback, mute and volume control via speech.
+    <br>Available commands are:</p>
+
+
+    <ul>
+      <li id="vidPlay">"play"</li>
+      <li id="vidStop">"stop"</li>
+      <li id="vidReplay">"replay"</li>
+      <li id="vidVolOn">"volume on"</li>
+      <li id="vidVolOff">"volume off"</li>
+      <li id="vidVolInc">"volume increase"</li>
+      <li id="vidVolDec">"volume decrease"</li>
+    </ul>
+  
+</div>
+
+  <script src="js/video.js" defer></script>
+  <script>
+    var _gaq=[['_setAccount','UA-2046650-1'],['_trackPageview']];(function(a,b){var c=a.createElement(b),d=a.getElementsByTagName(b)[0];c.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";d.parentNode.insertBefore(c,d)})(document,"script");
+  </script>
+
+
+<div class="price_page_container">
+  
+  <span class="price_main_text">Latest word the API thinks you just said: 
+  <strong id="latest-word"></strong></span>
+  
+</div>
+
+<div class="footer_container">
+  <hr>
+  <div class="footer">
+    <div class="footer_left">
+      <span> 2019 </span>
+    </div>
+    <div class="footer_right">
+      <a href=""><img src="img/email.png"></a>
+      <a href=""><img src="img/twitter.png"></a>
+      <a href=""><img src="img/instagram.png"></a>
+      <a href=""><img src="img/telegram.png"></a>
+    </div>
+  </div>
+</div>
+      <script src="js/index.js"></script>
+</body>
+</html>
