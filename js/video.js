@@ -15,10 +15,7 @@ var strongEl = document.getElementById('latest-word');
 		rec.continuous = true;
 		rec.interimResults = false;
 		rec.lang = 'en';
-
-		// Define a threshold above which we are confident(!) that the recognition results are worth looking at 
-		var confidenceThreshold = 0.5;
-
+	    var confidenceThreshold = 0.5;
 		var userSaid = function(str, s) {
 			return str.indexOf(s) > -1;
 		}
@@ -35,36 +32,24 @@ var strongEl = document.getElementById('latest-word');
 		rec.onresult = function(e) {
 
   var resultsLength = event.results.length -1 ;
-  // get length of latest results
   var ArrayLength = event.results[resultsLength].length -1;
-  // get last word detected
   var saidWord = event.results[resultsLength][ArrayLength].transcript;
   
-  // loop through links and match to word spoken
   for (i=0; i<allLinks.length; i++) {
     
-    // get the word associated with the link
     var dataWord = allLinks[i].dataset.word;
-    
-    // if word matches chenge the colour of the link
-    if (saidWord.indexOf(dataWord) != -1) {
+       if (saidWord.indexOf(dataWord) != -1) {
       allLinks[i].click();
     }
   }
   
-  // append the last word to the bottom sentence
   strongEl.innerHTML = saidWord;
 
-			// Check each result starting from the last one
 			for (var i = e.resultIndex; i < e.results.length; ++i) {
-				// If this is a final result
 	       		if (e.results[i].isFinal) {
-	       			// If the result is equal to or greater than the required threshold
 	       			if (parseFloat(e.results[i][0].confidence) >= parseFloat(confidenceThreshold)) {
 		       			var str = e.results[i][0].transcript;
-		       			console.log('Recognised: ' + str);
-		       			
-		       			
+		       			console.log('Recognised: ' + str);     			      		
 		       				
 		       				if (userSaid(str, 'replay')) {
 		       					video.currentTime = 0;
@@ -113,7 +98,6 @@ var strongEl = document.getElementById('latest-word');
 	        	}
 	    	}
 		};
-
 		
 		var startRec = function() {
 			rec.start();
