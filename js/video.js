@@ -108,7 +108,6 @@ var strongEl = document.getElementById('latest-word');
 			rec.stop();
 			recStatus.innerHTML = 'not recognising';
 		}
-		// Setup listeners for the start and stop recognition buttons
 		startRecBtn.addEventListener('click', startRec, false);
 		stopRecBtn.addEventListener('click', stopRec, false);
 	}
